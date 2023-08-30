@@ -1,8 +1,8 @@
 import { useState } from "react";
-import apiKey from "../../apiKey";
 
 const SearchBar = ({setResults, setMsg, setIsSortedYear, setIsSortedRating}: {setResults: any, setMsg: any, setIsSortedYear: any, setIsSortedRating: any}) => {
-    const [userInput, setUserInput] = useState("");
+  const apiKey = process.env.REACT_APP_MOVIE_DB_API_KEY;
+  const [userInput, setUserInput] = useState("");
 
     const onSubmit = (e: any) => {
     e.preventDefault();

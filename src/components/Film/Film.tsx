@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import apiKey from "../../apiKey";
 import star from "../../images/star.png";
 import "./Film.css";
 import Carousel from "../carousels/Carousel";
@@ -22,6 +21,7 @@ const convertRunTime = (totalMinutes: number) => {
 };
 
 const Film = () => {
+  const apiKey = process.env.REACT_APP_MOVIE_DB_API_KEY;
   // film_id from the url
   const { film_id } = useParams();
   const [filmData, setFilmData] = useState<any>();
@@ -45,7 +45,7 @@ const Film = () => {
     return () => {
       cancelled = true;
     };
-  }, [film_id]);
+  }, [film_id, apiKey]);
 
   // GET watchProviders data
   useEffect(() => {
@@ -63,7 +63,7 @@ const Film = () => {
     return () => {
       cancelled = true;
     };
-  }, [filmData, film_id]);
+  }, [filmData, film_id, apiKey]);
 
   // GET similar films
   useEffect(() => {
@@ -81,7 +81,7 @@ const Film = () => {
     return () => {
       cancelled = true;
     };
-  }, [filmData, film_id]);
+  }, [filmData, film_id, apiKey]);
 
   return (
     <>

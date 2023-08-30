@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import apiKey from "../../apiKey";
 import Carousel from "./Carousel";
 const { format } = require("date-fns");
 let date = format(new Date(), "yyyy.MM.dd");
@@ -7,6 +6,7 @@ let date = format(new Date(), "yyyy.MM.dd");
 const PopularFilms = () => {
   const [popularResults, setPopularResults] = useState([]);
   const [msg, setMsg] = useState("");
+  const apiKey = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
   useEffect(() => {
     fetch(
@@ -29,7 +29,7 @@ const PopularFilms = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [apiKey]);
 
   return (
     <Carousel

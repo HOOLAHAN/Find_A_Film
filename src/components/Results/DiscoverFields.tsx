@@ -1,8 +1,8 @@
 import { useState } from "react";
-import apiKey from "../../apiKey";
 import Select from 'react-select';
 
 const DiscoverFields = ({setResults, setMsg}: {setResults: any, setMsg: any}) => {
+  const apiKey = process.env.REACT_APP_MOVIE_DB_API_KEY;
   const [discoverParams, setDiscoverParams] = useState({
     rating: "",
     releasedFrom: "",
